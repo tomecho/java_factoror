@@ -6,8 +6,7 @@ public class Factor {
         }
         return true;
     }
-    public static boolean factored(ArrayList<Integer> fac, int x){
-        int y = 1;
+    public static boolean factored(ArrayList<Integer> fac){
         for(int f : fac) if(!isPrime(f)) return false;
         return true;
     }
@@ -15,7 +14,7 @@ public class Factor {
     	ArrayList<Integer> fac = new ArrayList<Integer>();
     	fac.add(x);
         if(isPrime(x)) return fac; //already factored!
-        while(!factored(fac, x)){
+        while(!factored(fac)){
     	    for(int i=2;i<x;i++){
     	        if(fac.get(fac.size()-1) % i == 0) {
     	            int y = fac.remove(fac.size()-1);
@@ -33,6 +32,11 @@ public class Factor {
         return fac;
     }
     public static void main(String[] args) {
+        if(args.length == 0){
+          System.out.println("What number should i factor, call me like \"java Factor NUMBER\"");
+          System.exit(0);
+        }
+        System.out.println("factoring " + args[0]);
         System.out.println(primeFactorization(Integer.parseInt(args[0])));
     }
 }
