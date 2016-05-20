@@ -22,13 +22,13 @@ public class Factor {
   }
   public static ArrayList<Integer> recursiveFactor(ArrayList<Integer> fac){
     if(factored(fac)) return fac;
-    for(int i=0; i<fac.size();i++){
+    for(int i=0; i<fac.size();i++){ //find the first non prime
       if(!isPrime(fac.get(i))) {
         int[] f = factors(fac.get(i));
         fac.remove(i);
         fac.add(f[0]);
         fac.add(f[1]);
-        break;
+        break; //recurse because it needs to reset fac.size
       }
     }
     return recursiveFactor(fac);
